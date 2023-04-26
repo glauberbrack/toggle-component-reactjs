@@ -9,20 +9,14 @@ type Props = {
   variant?: "blue" | "red";
 };
 
-export const Switch = ({ variant = "blue" }: Props) => {
-  const [isChecked, setIsChecked] = useState(false);
+export const Toggle = ({ variant = "blue" }: Props) => {
   const [type, setType] = useState<"grid" | "list">("grid");
 
   const onToggle = () =>
     setType((oldState) => (oldState === "grid" ? "list" : "grid"));
 
-  const handleToggle = () => {
-    onToggle();
-    setIsChecked(!isChecked);
-  };
-
   return (
-    <div className={`switch ${type}`} onClick={handleToggle}>
+    <div className={`toggle ${type}`} onClick={onToggle}>
       <Image
         className="grid-image"
         src={GridIcon}
@@ -30,7 +24,7 @@ export const Switch = ({ variant = "blue" }: Props) => {
         height={12}
         alt="Grid Item"
       />
-      <div className={`switch-indicator ${variant}`} />
+      <div className={`toggle-indicator ${variant}`} />
       <Image
         className="list-image"
         src={ListIcon}
